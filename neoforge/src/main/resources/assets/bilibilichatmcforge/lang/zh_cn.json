@@ -1,0 +1,6 @@
+{
+  "mod.bilibilichatmcforge.config.title": "BLChat 配置",
+  "mod.bilibilichatmcforge.config.save": "保存",
+  "mod.bilibilichatmcforge.chat.identity_code_updated": "身份码已更新: %s",
+  "mod.bilibilichatmcforge.chat.restarting": "正在重启 Bilibili 客户端..."
+}

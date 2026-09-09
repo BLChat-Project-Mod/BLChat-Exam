@@ -1,0 +1,6 @@
+{
+  "mod.bilibilichatmcforge.config.title": "BLChat Config",
+  "mod.bilibilichatmcforge.config.save": "Save",
+  "mod.bilibilichatmcforge.chat.identity_code_updated": "Identity code updated: %s",
+  "mod.bilibilichatmcforge.chat.restarting": "Restarting Bilibili client..."
+}

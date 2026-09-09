@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": ["${mod_authors}"],
+  "contact": {
+    "homepage": "https://github.com/JeffreyMing2004",
+    "issues": "https://github.com/JeffreyMing2004/BilibiliChat-MC-Forge/issues"
+  },
+  "license": "${mod_license}",
+  "icon": "assets/bilibilichatmcforge/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.ming.bilibilichatmcforge.Bilibilichatmcforge"
+    ]
+  },
+  "mixins": [
+    "${mod_id}.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "${minecraft_version_range}"
+  }
+}

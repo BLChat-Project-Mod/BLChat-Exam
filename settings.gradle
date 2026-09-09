@@ -2,6 +2,8 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://maven.fabricmc.net/' }
+        maven { url = 'https://maven.neoforged.net/releases' }
     }
 }
 
@@ -10,3 +12,10 @@ plugins {
 }
 
 rootProject.name = 'BLChat'
+
+// 推荐构建方式：默认 Forge（根目录 build.gradle）
+// 可选构建：NeoForge / Fabric，按需 include 子项目
+include 'neoforge'
+include 'fabric'
+
+// 若只想保留 Forge，可注释掉上面两行；或直接运行根项目构建。
