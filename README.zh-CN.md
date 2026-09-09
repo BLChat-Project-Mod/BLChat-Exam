@@ -1,5 +1,12 @@
 # BLChat
 
+> ## 🎓 考试仓库 / Exam Repository
+>
+> 本仓库为 **BLChat 开发组项目招聘考核** 专属仓库，用于考试提交与评审。
+> This repository is dedicated to the **BLChat dev team recruitment exam**, used for exam submission and review.
+>
+> **考核问卷 / Exam Questionnaire**: <https://f.wps.cn/g/RsQ215rx/>
+
 <div align="center">
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green)
