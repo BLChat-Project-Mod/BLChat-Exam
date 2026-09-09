@@ -1,65 +1,21 @@
 # 贡献指南（Contributing）
 
-感谢你愿意为本项目做贡献。
+## 🎓 考试项目声明
 
-## 提交内容类型
+本仓库为 **BLChat 开发组项目招聘考核** 专属仓库，用于考试提交与评审。请遵守考核要求并在截止前完成提交。
 
-- Bug 修复
-- 新功能
-- 文档与示例补充
-- 本地化（语言文件）完善
-- 性能与稳定性改进
+考核问卷：<https://f.wps.cn/g/RsQ215rx/>
 
-## 开发环境
+## 项目简介
 
-- Java：17
-- Minecraft：1.20.1
-- Forge：47.4.20
+BLChat 是一个 Minecraft Forge Mod（Java 17 · MC 1.20.1 · Forge 47），将 B 站直播间的弹幕、礼物、Super Chat、大航海等事件实时显示在游戏聊天栏中。
 
-## 开始开发
+## 配置
 
-1. Fork 本仓库并创建分支
-2. 使用 Java 17 打开工程
-3. 通过 Gradle 任务运行调试
+- 身份码：通过指令 `/bilibili identitycode <身份码>` 或配置文件 `config/bilibilichat-config.json` 设置
+- 哔哩哔哩开放平台凭据（`ACCESS_KEY_ID` / `ACCESS_SECRET` / `APP_ID`）**有意不提交**到仓库，请在本地 `BilibiliClient.java` 中填写后再构建可分发的 jar
+- **不要**将任何真实的密钥、token 或个人敏感信息提交到仓库
 
-```bash
-./gradlew runClient
-```
+## 许可证
 
-## 构建
-
-```bash
-./gradlew build
-```
-
-构建产物：`build/libs/*.jar`
-
-## 配置与敏感信息
-
-本 Mod 需要哔哩哔哩开放平台参数（Access Key / Secret / App ID / 身份码）。
-
-- 不要在任何提交中包含真实的 Access Key / Secret
-- 不要把你的 `config/bilibilichat-config.json` 提交到仓库
-- 如果需要演示或测试，请使用假数据或临时申请的测试凭据
-
-## 提交规范
-
-- 尽量保持一次 PR 做一件事（单一目的）
-- PR 描述中说明：
-  - 解决了什么问题 / 新增了什么能力
-  - 如何复现 / 如何验证
-  - 是否涉及配置、网络请求或协议字段变更
-
-## 代码风格
-
-- 以现有代码风格为准
-- 避免在日志中输出敏感信息
-- 若新增可配置项，请同步更新语言文件（`assets/bilibilichatmcforge/lang/`）
-
-## PR 检查项
-
-提交前至少确认：
-
-- `./gradlew build` 可通过
-- 不包含敏感信息（密钥、token、个人信息）
-- 对用户可见的文本已补充中英文（如适用）
+本项目基于 [LGPL-2.1](LICENSE) 许可证发布。
