@@ -11,15 +11,7 @@ mdk-25.1.2/
 mdk-26.1.2/
 forge-26.1.2-mdk.zip
 
-# legacy dev workspaces
-1.20.x/Forge/
-1.21.x/Forge/
-
 # all
-1.20.x/all/
-1.21.x/all/
-26.1.x/all/
-26.2.x/all/
 /all/
 
 # proguard

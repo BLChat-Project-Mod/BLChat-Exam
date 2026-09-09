@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![Minecraft](https://img.shields.io/badge/Minecraft-1.20~26.2-green)
-![Forge](https://img.shields.io/badge/Forge-46~65-orange)
-![Java](https://img.shields.io/badge/Java-17_/_21_/_25-red)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green)
+![Forge](https://img.shields.io/badge/Forge-47-orange)
+![Java](https://img.shields.io/badge/Java-17-red)
 ![Bilibili](https://img.shields.io/badge/Bilibili-Live-fb7299)
 ![Modrinth](https://img.shields.io/badge/Modrinth-BLChat-00af54)
 ![License](https://img.shields.io/badge/License-LGPL--2.1-blue)
@@ -23,7 +23,7 @@
 
 ## 项目简介
 
-BLChat 将 B 站直播间的弹幕、礼物、Super Chat、大航海等事件实时显示在 Minecraft 游戏聊天栏中。采用多 jar 架构，覆盖 Minecraft 1.20 ~ 26.2 全版本。
+BLChat 将 B 站直播间的弹幕、礼物、Super Chat、大航海等事件实时显示在 Minecraft 游戏聊天栏中。当前版本面向 Minecraft 1.20.1（Forge）。
 
 | 组件 | 说明 |
 |------|------|
@@ -31,7 +31,7 @@ BLChat 将 B 站直播间的弹幕、礼物、Super Chat、大航海等事件实
 | **H5 管理面板** | 主播身份码验证、主播信息、OBS 弹幕地址获取（独立部署） |
 | **OBS 弹幕覆盖层** | 透明弹幕页面，适配 OBS 浏览器源 |
 
-> 主播只需一个身份码：B 站开放平台的凭据已内置在模组中，无需自行申请。
+> 主播只需一个身份码。
 
 ## 功能特性
 
@@ -55,18 +55,6 @@ BLChat 将 B 站直播间的弹幕、礼物、Super Chat、大航海等事件实
 | MC 版本 | Forge | Java | 下载文件 |
 |:---:|:---:|:---:|---|
 | 1.20 ~ 1.20.1 | 46 ~ 47 | 17 | `BLChat-1.20-1.20.1-*.jar` |
-| 1.20.2 ~ 1.20.4 | 48 ~ 49 | 17 | `BLChat-1.20.2-1.20.4-*.jar` |
-| 1.20.6 | 50 | 21 | `BLChat-1.20.6-*.jar` |
-| 1.21 ~ 1.21.1 | 51 ~ 52 | 21 | `BLChat-1.21-1.21.1-*.jar` |
-| 1.21.2 ~ 1.21.5 | 53 ~ 55 | 21 | `BLChat-1.21.2-1.21.5-*.jar` |
-| 1.21.6 ~ 1.21.10 | 56 ~ 60 | 21 | `BLChat-1.21.6-1.21.10-*.jar` |
-| 1.21.11 | 61 | 21 | `BLChat-1.21.11-*.jar` |
-| 26.1 | 62 | 25 | `BLChat-26.1-*.jar` |
-| 26.1.1 | 63 | 25 | `BLChat-26.1.1-*.jar` |
-| 26.1.2 | 64 | 25 | `BLChat-26.1.2-*.jar` |
-| 26.2 | 65 | 25 | `BLChat-26.2-*.jar` |
-
-> **注意**：MC 1.20.5 无对应 Forge 构建，使用 `BLChat-1.20.6-*.jar` 即可。
 
 ## 配置
 
@@ -106,53 +94,42 @@ H5 管理面板（身份码验证、主播信息、OBS 覆盖层地址分发、�
 build-all.bat
 ```
 
-自动编译全部 11 个版本 jar 并收集到根目录 `all\` 文件夹。需要本机已安装 Java 17 / 21 / 25（`tools/build-all-versions.ps1` 中配置的路径）。
+自动编译 1.20.1 的 jar 并收集到根目录 `all\` 文件夹。需要本机已安装 Java 17（`tools/build-all-versions.ps1` 中配置的路径）。
 
-**单版本构建**：
+**构建**：
 
 ```bash
-cd 1.21.x/forge-1.21
 ./gradlew build
 # 产物：build/libs/*.jar
 ```
 
-推送代码后，GitHub Actions（[build.yml](.github/workflows/build.yml)）会自动以矩阵方式构建全部版本并在 Artifacts 中上传。
+推送代码后，GitHub Actions（[build.yml](.github/workflows/build.yml)）会自动构建并在 Artifacts 中上传。
 
 ## 项目结构
 
 ```
 BLChat/
-├── 1.20.x/                       # MC 1.20~1.20.6 (Java 17/21)
-│   ├── shared/                   # 共享源码（弹幕客户端、版本检测等）
-│   ├── forge-1.20/               # Jar: 1.20~1.20.1 (Forge 47)
-│   ├── forge-1.20.2/             # Jar: 1.20.2~1.20.4 (Forge 49)
-│   └── forge-1.20.6/             # Jar: 1.20.6 (Forge 50)
-├── 1.21.x/                       # MC 1.21~1.21.11 (Java 21)
-│   ├── shared/
-│   ├── forge-1.21/               # Jar: 1.21~1.21.1 (Forge 52)
-│   ├── forge-1.21.2/             # Jar: 1.21.2~1.21.5 (Forge 55)
-│   ├── forge-1.21.6/             # Jar: 1.21.6~1.21.10 (Forge 60)
-│   └── forge-1.21.11/            # Jar: 1.21.11 (Forge 61)
-├── 26.1.x/                       # MC 26.1~26.1.2 (Java 25)
-│   ├── shared/
-│   ├── forge-26.1/               # Jar: 26.1 (Forge 62)
-│   ├── forge-26.1.1/             # Jar: 26.1.1 (Forge 63)
-│   └── forge-26.1.2/             # Jar: 26.1.2 (Forge 64)
-├── 26.2.x/                       # MC 26.2 (Java 25)
-│   ├── shared/
-│   └── forge-26.2/               # Jar: 26.2 (Forge 65)
-├── tools/                        # 构建与凭据工具脚本
-├── build-all.bat                 # 一键构建全部版本
-└── version.properties            # 全局版本号（构建时注入）
+├── src/main/                     # 模组源码（Java + 资源）
+│   ├── java/net/ming/bilibilichatmcforge/
+│   │   ├── Bilibilichatmcforge.java   # 模组主入口
+│   │   ├── Config.java                # Forge 配置定义
+│   │   ├── JsonConfigManager.java     # JSON 配置持久化
+│   │   ├── client/BilibiliConfigScreen.java
+│   │   └── utils/                     # 弹幕客户端、版本检测
+│   └── resources/               # mods.toml、pack.mcmeta、语言文件
+├── tools/                        # 构建工具脚本
+├── build-all.bat                 # 一键构建
+├── version.properties            # 全局版本号（构建时注入）
+└── build.gradle, settings.gradle # Gradle 构建文件
 ```
 
-每个版本线内含独立的 `build.gradle` 与 Gradle Wrapper；模组版本号统一来自根目录 `version.properties`，构建时自动生成 `blchat-version.properties` 与 `mods.toml`。
+直接使用默认的 `src/main/java` 与 `src/main/resources` 目录。模组版本号统一来自根目录 `version.properties`，构建时自动生成 `blchat-version.properties` 与 `mods.toml`。
 
 ## 技术栈
 
 | 层 | 技术 |
 |----|------|
-| MC 模组 | Java 17 / 21 / 25 · Minecraft Forge 46~65 · 多 jar 架构 |
+| MC 模组 | Java 17 · Minecraft Forge 47 |
 | 弹幕接入 | 哔哩哔哩直播开放平台 API v2（WebSocket + 心跳） |
 | 配置存储 | JSON（`config/bilibilichat-config.json`） |
 | 版本检测 | `version.mingpixel.net` |
@@ -161,7 +138,7 @@ BLChat/
 ## 注意事项
 
 - 身份码属于账号敏感信息，**不要**分享给他人或提交到仓库
-- B 站开放平台凭据已混淆内置，主播无需申请；密钥轮换使用 `tools/encode-credentials.ps1`
+- B 站开放平台 API 凭据**有意不提交**到仓库。发布可分发的 jar 前，请在本地 `BilibiliClient.java` 中填写 `ACCESS_KEY_ID` / `ACCESS_SECRET` / `APP_ID`
 - 模组面向单机/客户端场景（`clientSideOnly`），弹幕显示在本地游戏聊天栏
 
 ## 支持项目

@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![Minecraft](https://img.shields.io/badge/Minecraft-1.20~26.2-green)
-![Forge](https://img.shields.io/badge/Forge-46~65-orange)
-![Java](https://img.shields.io/badge/Java-17_/_21_/_25-red)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green)
+![Forge](https://img.shields.io/badge/Forge-47-orange)
+![Java](https://img.shields.io/badge/Java-17-red)
 ![Bilibili](https://img.shields.io/badge/Bilibili-Live-fb7299)
 ![Modrinth](https://img.shields.io/badge/Modrinth-BLChat-00af54)
 ![License](https://img.shields.io/badge/License-LGPL--2.1-blue)
@@ -23,7 +23,7 @@ Comes with a web management panel and an OBS danmaku overlay
 
 ## Overview
 
-BLChat displays danmaku (chat comments), gifts, Super Chats, and guard purchases from a Bilibili live room in the Minecraft chat, in real time. A multi-jar architecture covers Minecraft 1.20 through 26.2.
+BLChat displays danmaku (chat comments), gifts, Super Chats, and guard purchases from a Bilibili live room in the Minecraft chat, in real time. Targets Minecraft 1.20.1 (Forge).
 
 | Component | Description |
 |------|------|
@@ -31,7 +31,7 @@ BLChat displays danmaku (chat comments), gifts, Super Chats, and guard purchases
 | **H5 Web Panel** | Identity-code verification, streamer info, OBS overlay URL dispatch (deployed separately) |
 | **OBS Danmaku Overlay** | Transparent danmaku page for OBS browser sources |
 
-> Streamers only need an identity code — the Bilibili Open Platform credentials are built into the mod, so there is nothing to apply for.
+> Streamers only need an identity code.
 
 ## Features
 
@@ -55,18 +55,6 @@ BLChat displays danmaku (chat comments), gifts, Super Chats, and guard purchases
 | MC Version | Forge | Java | Download File |
 |:---:|:---:|:---:|---|
 | 1.20 ~ 1.20.1 | 46 ~ 47 | 17 | `BLChat-1.20-1.20.1-*.jar` |
-| 1.20.2 ~ 1.20.4 | 48 ~ 49 | 17 | `BLChat-1.20.2-1.20.4-*.jar` |
-| 1.20.6 | 50 | 21 | `BLChat-1.20.6-*.jar` |
-| 1.21 ~ 1.21.1 | 51 ~ 52 | 21 | `BLChat-1.21-1.21.1-*.jar` |
-| 1.21.2 ~ 1.21.5 | 53 ~ 55 | 21 | `BLChat-1.21.2-1.21.5-*.jar` |
-| 1.21.6 ~ 1.21.10 | 56 ~ 60 | 21 | `BLChat-1.21.6-1.21.10-*.jar` |
-| 1.21.11 | 61 | 21 | `BLChat-1.21.11-*.jar` |
-| 26.1 | 62 | 25 | `BLChat-26.1-*.jar` |
-| 26.1.1 | 63 | 25 | `BLChat-26.1.1-*.jar` |
-| 26.1.2 | 64 | 25 | `BLChat-26.1.2-*.jar` |
-| 26.2 | 65 | 25 | `BLChat-26.2-*.jar` |
-
-> **Note**: MC 1.20.5 has no matching Forge build — use the `BLChat-1.20.6-*.jar` instead.
 
 ## Configuration
 
@@ -106,53 +94,42 @@ At startup the mod checks the latest version against `version.mingpixel.net` and
 build-all.bat
 ```
 
-Builds all 11 version jars and collects them into `all\`. Requires local JDK 17 / 21 / 25 (paths configured in `tools/build-all-versions.ps1`).
+Builds the single 1.20.1 jar and collects it into `all\`. Requires local JDK 17 (path configured in `tools/build-all-versions.ps1`).
 
-**Single version build**:
+**Build**:
 
 ```bash
-cd 1.21.x/forge-1.21
 ./gradlew build
 # output: build/libs/*.jar
 ```
 
-On push, GitHub Actions ([build.yml](.github/workflows/build.yml)) builds all version lines automatically and uploads the jars as artifacts.
+On push, GitHub Actions ([build.yml](.github/workflows/build.yml)) builds the mod automatically and uploads the jar as an artifact.
 
 ## Project Structure
 
 ```
 BLChat/
-├── 1.20.x/                       # MC 1.20~1.20.6 (Java 17/21)
-│   ├── shared/                   # Shared sources (danmaku client, version check, ...)
-│   ├── forge-1.20/               # Jar: 1.20~1.20.1 (Forge 47)
-│   ├── forge-1.20.2/             # Jar: 1.20.2~1.20.4 (Forge 49)
-│   └── forge-1.20.6/             # Jar: 1.20.6 (Forge 50)
-├── 1.21.x/                       # MC 1.21~1.21.11 (Java 21)
-│   ├── shared/
-│   ├── forge-1.21/               # Jar: 1.21~1.21.1 (Forge 52)
-│   ├── forge-1.21.2/             # Jar: 1.21.2~1.21.5 (Forge 55)
-│   ├── forge-1.21.6/             # Jar: 1.21.6~1.21.10 (Forge 60)
-│   └── forge-1.21.11/            # Jar: 1.21.11 (Forge 61)
-├── 26.1.x/                       # MC 26.1~26.1.2 (Java 25)
-│   ├── shared/
-│   ├── forge-26.1/               # Jar: 26.1 (Forge 62)
-│   ├── forge-26.1.1/             # Jar: 26.1.1 (Forge 63)
-│   └── forge-26.1.2/             # Jar: 26.1.2 (Forge 64)
-├── 26.2.x/                       # MC 26.2 (Java 25)
-│   ├── shared/
-│   └── forge-26.2/               # Jar: 26.2 (Forge 65)
-├── tools/                        # Build & credential tooling
-├── build-all.bat                 # One-click build for all version lines
-└── version.properties            # Global version (injected at build)
+├── src/main/                     # Mod sources (Java + resources)
+│   ├── java/net/ming/bilibilichatmcforge/
+│   │   ├── Bilibilichatmcforge.java   # Main mod entry point
+│   │   ├── Config.java                # Forge config spec
+│   │   ├── JsonConfigManager.java     # JSON config persistence
+│   │   ├── client/BilibiliConfigScreen.java
+│   │   └── utils/                     # Danmaku client, version check
+│   └── resources/               # mods.toml, pack.mcmeta, lang files
+├── tools/                        # Build tooling
+├── build-all.bat                 # One-click build
+├── version.properties            # Global version (injected at build)
+└── build.gradle, settings.gradle # Gradle build files
 ```
 
-Each version line has its own `build.gradle` and Gradle wrapper. The mod version comes from the root `version.properties` and is injected into `blchat-version.properties` and `mods.toml` at build time.
+The default Gradle `src/main/java` and `src/main/resources` are used directly. The mod version comes from the root `version.properties` and is injected into `blchat-version.properties` and `mods.toml` at build time.
 
 ## Tech Stack
 
 | Layer | Technology |
 |----|------|
-| MC mod | Java 17 / 21 / 25 · Minecraft Forge 46~65 · multi-jar architecture |
+| MC mod | Java 17 · Minecraft Forge 47 |
 | Danmaku access | Bilibili Live Open Platform API v2 (WebSocket + heartbeat) |
 | Config storage | JSON (`config/bilibilichat-config.json`) |
 | Version check | `version.mingpixel.net` |
@@ -161,7 +138,7 @@ Each version line has its own `build.gradle` and Gradle wrapper. The mod version
 ## Notes
 
 - Identity codes are account-sensitive. **Do NOT** share them with others or commit them to the repository
-- Bilibili Open Platform credentials are obfuscated and built in — streamers do not need to apply; rotate keys with `tools/encode-credentials.ps1`
+- Bilibili Open Platform API credentials are intentionally **not** committed. Set `ACCESS_KEY_ID` / `ACCESS_SECRET` / `APP_ID` locally in `BilibiliClient.java` before building a distributable jar
 - The mod is client-side only (`clientSideOnly`); danmaku is rendered in the local game chat
 
 ## Support

@@ -207,27 +207,19 @@ Get the streamer identity code from the [Bilibili live setup page](https://link.
 
 ```
 BLChat/
-├── 1.20.x/                       # MC 1.20~1.20.6
-│   ├── shared/                   # 共享源码
-│   ├── forge-1.20/               # Jar: 1.20~1.20.1 (Forge 46~47, Java 17)
-│   ├── forge-1.20.2/             # Jar: 1.20.2~1.20.4 (Forge 48~49, Java 17)
-│   ├── forge-1.20.6/             # Jar: 1.20.6 (Forge 50, Java 21)
-│   └── build-all.bat             # 一键构建
-├── 1.21.x/                       # MC 1.21~1.21.11
-│   ├── shared/                   # 共享源码
-│   ├── forge-1.21/               # Jar: 1.21~1.21.1 (Forge 51~52, Java 21)
-│   ├── forge-1.21.2/             # Jar: 1.21.2~1.21.5 (Forge 53~55, Java 21)
-│   ├── forge-1.21.6/             # Jar: 1.21.6~1.21.10 (Forge 56~60, Java 21)
-│   ├── forge-1.21.11/            # Jar: 1.21.11 (Forge 61, Java 21)
-│   └── build-all.bat             # 一键构建
-├── 26.1.x/                       # MC 26.1~26.1.2
-│   ├── shared/                   # 共享源码
-│   ├── forge-26.1/               # Jar: 26.1 (Forge 62, Java 25)
-│   ├── forge-26.1.1/             # Jar: 26.1.1 (Forge 63, Java 25)
-│   ├── forge-26.1.2/             # Jar: 26.1.2 (Forge 64, Java 25)
-│   └── build-all.bat             # 一键构建
-├── build.gradle                  # Forge 构建配置 (1.20.1 legacy)
+├── src/main/                     # 模组源码（Java + 资源）
+│   ├── java/net/ming/bilibilichatmcforge/
+│   │   ├── Bilibilichatmcforge.java   # 模组主入口
+│   │   ├── Config.java                # Forge 配置定义
+│   │   ├── JsonConfigManager.java     # JSON 配置持久化
+│   │   ├── client/BilibiliConfigScreen.java
+│   │   └── utils/                     # 弹幕客户端、版本检测
+│   └── resources/               # mods.toml、pack.mcmeta、语言文件
+├── tools/                        # 构建工具脚本
+├── build-all.bat                 # 一键构建
+├── build.gradle                  # Forge 构建配置 (1.20.1)
 ├── gradle.properties             # 模组版本与元数据
+├── version.properties            # 全局版本号
 └── README.md
 ```
 
